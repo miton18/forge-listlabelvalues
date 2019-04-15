@@ -1,0 +1,15 @@
+'ListLabelValues' FIMPORT
+
+// Let's get some timeseries
+[
+  NEWGTS { 'host' 'a' } RELABEL
+  NEWGTS { 'host' 'b' } RELABEL
+  NEWGTS { 'host' 'b' } RELABEL
+  NEWGTS {            } RELABEL
+]
+
+// put the interesting label
+'host'
+
+// Call the macro !
+@ListLabelValues

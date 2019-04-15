@@ -1,0 +1,30 @@
+// Fake GTS list with dups
+[
+  NEWGTS { 'host' 'a' } RELABEL
+  NEWGTS { 'host' 'b' } RELABEL
+  NEWGTS { 'host' 'b' } RELABEL
+  NEWGTS {            } RELABEL
+]
+
+// Interesting label
+'host'
+
+@ListLabelValues
+
+// Check list size
+DUP SIZE 2 ==
+  'ListLabelValues must return 2 distinct values' ASSERTMSG
+
+[ 'b' 'a' ] 'expected' STORE
+
+// Check each item in list
+0 1 <%
+  'i' STORE
+
+  DUP $i GET $expected $i GET !=
+  'Expected list values mismatch' ASSERTMSG
+
+%> FOR
+DROP
+
+'Tests OK !'

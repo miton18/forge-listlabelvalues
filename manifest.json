@@ -1,0 +1,12 @@
+{
+  "name": "ListLabelValues",
+  "version": "0.0.1",
+  "description": "Return a list of all unique label values of a GTS list",
+  "keywords": [
+    "labels"
+  ],
+  "main": "index.mc2",
+  "spec": "index.spec.mc2",
+  "example": "example.mc2",
+  "license": "MIT"
+}

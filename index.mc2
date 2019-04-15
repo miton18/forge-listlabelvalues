@@ -1,0 +1,44 @@
+<%
+  <'
+    ListLabelValues
+
+    Return a list of all unique label values of a GTS list
+
+    See on the forge https://forge.ovh/macros/ListLabelValues
+
+    The code in this project is licensed under MIT license.
+  '>
+
+  DOC
+
+  DUP
+  <% TYPEOF 'STRING' !=  %>
+    <% 'ListLabelValues expect a label bane (string) on top of the stack' MSGFAIL %>
+  IFT
+  'label' STORE
+
+  DUP
+  <% TYPEOF 'LIST' !=  %>
+    <% 'ListLabelValues expect a List as 2nd entry of the stack' MSGFAIL %>
+  IFT
+
+  [] 'list' STORE
+
+  <%
+    DUP
+    <% TYPEOF 'GTS' !=  %>
+      <% DROP CONTINUE %>
+    IFT
+
+    LABELS
+    <% $label CONTAINSKEY ! %>
+      <% DROP CONTINUE %>
+    IFT
+
+    $label GET
+    $list SWAP +! DROP
+
+  %> FOREACH
+
+  $list UNIQUE
+%>
